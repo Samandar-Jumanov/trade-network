@@ -1,9 +1,6 @@
 // Security config
-
-
 package com.trade.security;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     // Security filter chain
     private final AuthenticationProvider authenticationProvider;
-    private JwtFilter  jwtAuthFilter;
+    private final  JwtFilter             jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -55,8 +52,6 @@ public class SecurityConfig {
                  .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                  .authenticationProvider(authenticationProvider)
                  .addFilterBefore( jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
-
 
          return http.build();
 

@@ -66,13 +66,14 @@ public class User implements UserDetails  , Principal {
         return firstname;
     }
 
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.userRoles
                 .stream()
                 .map( r ->  new SimpleGrantedAuthority(r.getTitle()))
                 .collect(Collectors.toList());
-
 
         /*
          *   Stream returns -> [ SimpleGrantedAuthority() , SimpleGrantedAuthority() ]
@@ -115,7 +116,7 @@ public class User implements UserDetails  , Principal {
     }
 
 
-    private String getFullName() {
+    public  String getFullName() {
         return firstname + " " + lastname;
     }
 

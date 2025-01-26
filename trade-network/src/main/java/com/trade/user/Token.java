@@ -2,10 +2,7 @@ package com.trade.user;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 
 public class Token {
 
@@ -32,7 +30,6 @@ public class Token {
     @ManyToOne
     @JoinColumn(name = "userId" , nullable = false)
     private User user;
-
 
 
 }
