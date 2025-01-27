@@ -28,4 +28,24 @@ public class AuthController {
         return  ResponseEntity.accepted().build();
     };
 
+
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<AuthLoginResponse> login(
+              @RequestBody @Valid LoginRequest request
+    )
+    {
+            return  ResponseEntity.ok(authservice.login(request));
+    }
+
+
+    @GetMapping("/activate-account")
+    public ResponseEntity<?> activateAccount(
+         @RequestParam   String token
+    ) throws MessagingException {
+          authservice.activateAccount(token);
+          return  ResponseEntity.ok().build();
+    }
+
 }
