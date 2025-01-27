@@ -23,7 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @EntityListeners(AuditingEntityListener.class)
-
+@Table(name = "roles")
 
 public class Roles {
 
@@ -37,7 +37,7 @@ public class Roles {
 
 
     // Connecting with user
-    @ManyToMany(mappedBy = "userRoles") // defines what to type in Users entity
+    @ManyToMany(mappedBy = "roles") // defines what to type in Users entity
     @JsonIgnore
     private List<User> users;
 

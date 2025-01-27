@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor // add constructor with no args
 @AllArgsConstructor // ad constructor with all args
 @Entity // highlight as entity
-@Table(name = "user") // provide table name
+@Table(name = "users") // provide table name
 @EntityListeners(AuditingEntityListener.class)  // ?
 
 public class User implements UserDetails  , Principal {
@@ -58,7 +58,7 @@ public class User implements UserDetails  , Principal {
 
     //Connection wih roles
     @ManyToMany( fetch = FetchType.EAGER)
-    private List<Roles> userRoles;
+    private List<Roles> roles;
 
 
     @Override
@@ -70,7 +70,7 @@ public class User implements UserDetails  , Principal {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.userRoles
+        return this.roles
                 .stream()
                 .map( r ->  new SimpleGrantedAuthority(r.getTitle()))
                 .collect(Collectors.toList());

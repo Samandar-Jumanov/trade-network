@@ -2,12 +2,11 @@ package com.trade.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.management.relation.Role;
 import java.util.Optional;
 
-public interface  RoleRepo extends JpaRepository<Role , Integer> {
+public interface  RoleRepo extends JpaRepository<Roles , Integer> {
 
-     Optional<Role> findByTitle (String title);
+     Optional<Roles> findByTitle (String title);
 
 
 }

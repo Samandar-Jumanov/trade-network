@@ -27,8 +27,7 @@ public class RegisterRequest
     private String lastname;
 
 
-    @NotNull(message = "Firstname is required")
-    @NotBlank(message = "Firstname is blank")
+    @NotNull(message = "Birthday is required")
     private LocalDate birthday;
 
 

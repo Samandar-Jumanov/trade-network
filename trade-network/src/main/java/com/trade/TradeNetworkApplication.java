@@ -12,8 +12,6 @@ public class TradeNetworkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TradeNetworkApplication.class, args);
-
-		System.out.println("Hello World!");
+		System.out.println("Server started on port : " + 8080);
 	}
-
 }

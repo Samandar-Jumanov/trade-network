@@ -33,7 +33,6 @@ public class AuthService {
     private final UserRepo userRepo;
     private  final TokenRepo tokenRepo;
     private final EmailService emailService;
-    private final AuthenticationManager authManager;
     private final AuthenticationManager authenticationManager;
     private final JwtService  jwtService;
 
@@ -54,7 +53,7 @@ public class AuthService {
                   .accountLocked(false)
                   .enabled(false)
                   .password(passwordEncoder.encode(data.getPassword())) // hash password
-                  .userRoles(List.of()) // to do
+                  .roles(List.of()) // to do
                   .build();
 
           userRepo.save(user);
@@ -131,6 +130,7 @@ public class AuthService {
 
 
         Boolean isExpired = LocalDateTime.now().isAfter(dbToken.getExpiresAt());
+
         if(isExpired){
             sendValidationEmail(dbToken.getUser());
             throw new RuntimeException("Token is expired , new token has been sent ");

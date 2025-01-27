@@ -1,9 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/trade-network
-    username: username
-    password: password
+    url: jdbc:postgresql://ep-icy-darkness-a8f7xl9p-pooler.eastus2.azure.neon.tech/neondb
+    username: neondb_owner
+    password: npg_p3UficbOC6au
     driver-class-name: org.postgresql.Driver
+    hikari:
+      ssl-mode: require
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,32 +16,38 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   mail:
-    host: localhost
-    port: 1025
-    username: ali
-    password: ali
+    host: smtp.gmail.com
+    port: 587
+    username: mail
+    password: "trxx naat syix tamm"
     properties:
       mail:
         smtp:
           trust: "*"
-        auth: true
-        starttls:
-          enabled: true
-        connectiontimeout: 5000
-        timeout: 3000
-        writetimeout: 5000
+          auth: true
+          starttls:
+            enabled: true
+      connectiontimeout: 5000
+      timeout: 3000
+      writetimeout: 5000
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: "http://localhost:9090/realms/book-social-network"
+          issuer-uri: "http://localhost:9090/shit/happaned"
 application:
+  security:
+    jwt:
+      secret-key: "dsjilajfajlfjladjlf"
+      expiration: 86400000  # 1 day in milliseconds
+      refresh-token:
+        expiration: 604800000  # 7 days in milliseconds
   file:
     uploads:
       photos-output-path: ./uploads
-
   mailing:
     frontend:
       activation_url: "http://localhost:8080"
+
 server:
-  port: 8088
+  port: 8080
