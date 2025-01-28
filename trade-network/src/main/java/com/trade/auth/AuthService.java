@@ -122,12 +122,10 @@ public class AuthService {
     }
 
 
-    @Transactional
     public void activateAccount(String token) throws MessagingException {
 
         Token dbToken = tokenRepo.findByToken(token).orElseThrow(() -> new RuntimeException("Token not found"));
         // to - do different exception
-
 
         Boolean isExpired = LocalDateTime.now().isAfter(dbToken.getExpiresAt());
 
